@@ -1,0 +1,21 @@
+@inventory_host=localhost:8082
+
+GET http://{{inventory_host}}/api/inventory?skuCode=iphone_15&quantity=10 HTTP/1.1
+
+###
+POST http://localhost:8081/api/order HTTP/1.1
+content-type: application/json
+
+{
+    "skuCode": "iphone_15",
+    "price": "11.22",
+    "quantity": 1,
+    "userDetails":
+    {
+        "email": "joe@gmail.com", 
+        "firstName": "joe", 
+        "lastName": "bloggs"
+    }
+}
+
+
