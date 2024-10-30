@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.mircoservices.order.dto.OrderRequest;
 import com.example.mircoservices.order.service.OrderService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import java.util.concurrent.CompletableFuture;
 
 @RestController
@@ -18,6 +24,10 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    @Operation(summary = "Place a order", description = "This method creates a order for a product.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Order created", content = {
+                    @Content(mediaType = "application/text") }) })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest) {
