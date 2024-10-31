@@ -13,6 +13,7 @@ import org.testcontainers.containers.MySQLContainer;
 import com.example.mircoservices.order.stub.InventoryClientStub;
 
 import io.restassured.RestAssured;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @Import(TestcontainersConfiguration.class)
@@ -45,7 +46,13 @@ class OrderApplicationTests {
 				{
 				     "skuCode": "iphone_15",
 				     "price": 1000,
-				     "quantity": 1
+				     "quantity": 1,
+					 "userDetails":
+						{
+							"email": "joe@gmail.com",
+							"firstName": "joe",
+							"lastName": "bloggs"
+						}
 				}
 				""";
 		InventoryClientStub.stubInventoryCall("iphone_15", 1);
@@ -79,7 +86,7 @@ class OrderApplicationTests {
 				.contentType("application/json")
 				.body(submitOrderJson)
 				.when()
-				.post("/api/order")
+				.post("api/order")
 				.then()
 				.log().all()
 				.statusCode(500);
