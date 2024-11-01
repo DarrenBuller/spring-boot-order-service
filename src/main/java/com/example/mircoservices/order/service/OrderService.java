@@ -1,5 +1,6 @@
 package com.example.mircoservices.order.service;
 
+import java.text.MessageFormat;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class OrderService {
             orderRepository.save(order);
 
         } else {
-            throw new RuntimeException("Product with Skucode " + orderRequest.skuCode() + "is not in stock");
+            throw new RuntimeException(
+                    MessageFormat.format("Product with Skucode {0} is not in stock", orderRequest.skuCode()));
         }
     }
 
