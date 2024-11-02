@@ -1,4 +1,4 @@
-package com.example.mircoservices.order.controller;
+package com.example.microservices.order.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.mircoservices.order.dto.OrderRequest;
-import com.example.mircoservices.order.service.OrderService;
+import com.example.microservices.order.dto.OrderRequest;
+import com.example.microservices.order.service.OrderService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

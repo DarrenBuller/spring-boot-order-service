@@ -1,4 +1,4 @@
-package com.example.mircoservices.order.config;
+package com.example.microservices.order.config;
 
 import java.time.Duration;
 
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
-import com.example.mircoservices.order.client.InventoryClient;
+import com.example.microservices.order.client.InventoryClient;
 
 import lombok.RequiredArgsConstructor;
 

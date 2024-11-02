@@ -10,6 +10,7 @@ import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.containers.MySQLContainer;
 
+import com.example.microservices.order.OrderApplication;
 import com.example.mircoservices.order.stub.InventoryClientStub;
 
 import io.restassured.RestAssured;
