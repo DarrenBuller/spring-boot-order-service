@@ -38,7 +38,8 @@
 				"vscjava.vscode-java-pack",
 				"formulahendry.vscode-mysql",
 				"humao.rest-client",
-				"GitHub.vscode-github-actions"
+				"GitHub.vscode-github-actions",
+				"DotJoshJohnson.xml"
 			]
 		}
 	}
