@@ -6,38 +6,27 @@
 package com.example.microservices.order.event;
 
 import org.apache.avro.specific.SpecificData;
-import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
+@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 5617129048085132142L;
-
-
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OrderPlacedEvent\",\"namespace\":\"com.example.microservices.order.event\",\"fields\":[{\"name\":\"orderNumber\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"firstName\",\"type\":\"string\"},{\"name\":\"lastName\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static final SpecificData MODEL$ = new SpecificData();
+  private static SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<OrderPlacedEvent> ENCODER =
-      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<OrderPlacedEvent>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<OrderPlacedEvent> DECODER =
-      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
-
-  /**
-   * Return the BinaryMessageEncoder instance used by this class.
-   * @return the message encoder used by this class
-   */
-  public static BinaryMessageEncoder<OrderPlacedEvent> getEncoder() {
-    return ENCODER;
-  }
+      new BinaryMessageDecoder<OrderPlacedEvent>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
-   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<OrderPlacedEvent> getDecoder() {
     return DECODER;
@@ -46,36 +35,26 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
-   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<OrderPlacedEvent> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<OrderPlacedEvent>(MODEL$, SCHEMA$, resolver);
   }
 
-  /**
-   * Serializes this OrderPlacedEvent to a ByteBuffer.
-   * @return a buffer holding the serialized data for this instance
-   * @throws java.io.IOException if this instance could not be serialized
-   */
+  /** Serializes this OrderPlacedEvent to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /**
-   * Deserializes a OrderPlacedEvent from a ByteBuffer.
-   * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a OrderPlacedEvent instance decoded from the given buffer
-   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
-   */
+  /** Deserializes a OrderPlacedEvent from a ByteBuffer. */
   public static OrderPlacedEvent fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  private java.lang.CharSequence orderNumber;
-  private java.lang.CharSequence email;
-  private java.lang.CharSequence firstName;
-  private java.lang.CharSequence lastName;
+  @Deprecated public java.lang.CharSequence orderNumber;
+  @Deprecated public java.lang.CharSequence email;
+  @Deprecated public java.lang.CharSequence firstName;
+  @Deprecated public java.lang.CharSequence lastName;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -98,26 +77,19 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     this.lastName = lastName;
   }
 
-  @Override
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
-
-  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
-
   // Used by DatumWriter.  Applications should not call.
-  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return orderNumber;
     case 1: return email;
     case 2: return firstName;
     case 3: return lastName;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   // Used by DatumReader.  Applications should not call.
-  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -125,7 +97,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     case 1: email = (java.lang.CharSequence)value$; break;
     case 2: firstName = (java.lang.CharSequence)value$; break;
     case 3: lastName = (java.lang.CharSequence)value$; break;
-    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -136,7 +108,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   public java.lang.CharSequence getOrderNumber() {
     return orderNumber;
   }
-
 
   /**
    * Sets the value of the 'orderNumber' field.
@@ -154,7 +125,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     return email;
   }
 
-
   /**
    * Sets the value of the 'email' field.
    * @param value the value to set.
@@ -171,7 +141,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     return firstName;
   }
 
-
   /**
    * Sets the value of the 'firstName' field.
    * @param value the value to set.
@@ -187,7 +156,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
   public java.lang.CharSequence getLastName() {
     return lastName;
   }
-
 
   /**
    * Sets the value of the 'lastName' field.
@@ -211,11 +179,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    * @return A new OrderPlacedEvent RecordBuilder
    */
   public static com.example.microservices.order.event.OrderPlacedEvent.Builder newBuilder(com.example.microservices.order.event.OrderPlacedEvent.Builder other) {
-    if (other == null) {
-      return new com.example.microservices.order.event.OrderPlacedEvent.Builder();
-    } else {
-      return new com.example.microservices.order.event.OrderPlacedEvent.Builder(other);
-    }
+    return new com.example.microservices.order.event.OrderPlacedEvent.Builder(other);
   }
 
   /**
@@ -224,17 +188,12 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
    * @return A new OrderPlacedEvent RecordBuilder
    */
   public static com.example.microservices.order.event.OrderPlacedEvent.Builder newBuilder(com.example.microservices.order.event.OrderPlacedEvent other) {
-    if (other == null) {
-      return new com.example.microservices.order.event.OrderPlacedEvent.Builder();
-    } else {
-      return new com.example.microservices.order.event.OrderPlacedEvent.Builder(other);
-    }
+    return new com.example.microservices.order.event.OrderPlacedEvent.Builder(other);
   }
 
   /**
    * RecordBuilder for OrderPlacedEvent instances.
    */
-  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<OrderPlacedEvent>
     implements org.apache.avro.data.RecordBuilder<OrderPlacedEvent> {
 
@@ -245,7 +204,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$, MODEL$);
+      super(SCHEMA$);
     }
 
     /**
@@ -256,19 +215,19 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       super(other);
       if (isValidValue(fields()[0], other.orderNumber)) {
         this.orderNumber = data().deepCopy(fields()[0].schema(), other.orderNumber);
-        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+        fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.email)) {
         this.email = data().deepCopy(fields()[1].schema(), other.email);
-        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+        fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.firstName)) {
         this.firstName = data().deepCopy(fields()[2].schema(), other.firstName);
-        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+        fieldSetFlags()[2] = true;
       }
       if (isValidValue(fields()[3], other.lastName)) {
         this.lastName = data().deepCopy(fields()[3].schema(), other.lastName);
-        fieldSetFlags()[3] = other.fieldSetFlags()[3];
+        fieldSetFlags()[3] = true;
       }
     }
 
@@ -277,7 +236,7 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
      * @param other The existing instance to copy.
      */
     private Builder(com.example.microservices.order.event.OrderPlacedEvent other) {
-      super(SCHEMA$, MODEL$);
+            super(SCHEMA$);
       if (isValidValue(fields()[0], other.orderNumber)) {
         this.orderNumber = data().deepCopy(fields()[0].schema(), other.orderNumber);
         fieldSetFlags()[0] = true;
@@ -303,7 +262,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     public java.lang.CharSequence getOrderNumber() {
       return orderNumber;
     }
-
 
     /**
       * Sets the value of the 'orderNumber' field.
@@ -344,7 +302,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       return email;
     }
 
-
     /**
       * Sets the value of the 'email' field.
       * @param value The value of 'email'.
@@ -384,7 +341,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
       return firstName;
     }
 
-
     /**
       * Sets the value of the 'firstName' field.
       * @param value The value of 'firstName'.
@@ -423,7 +379,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     public java.lang.CharSequence getLastName() {
       return lastName;
     }
-
 
     /**
       * Sets the value of the 'lastName' field.
@@ -466,8 +421,6 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
         record.firstName = fieldSetFlags()[2] ? this.firstName : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.lastName = fieldSetFlags()[3] ? this.lastName : (java.lang.CharSequence) defaultValue(fields()[3]);
         return record;
-      } catch (org.apache.avro.AvroMissingFieldException e) {
-        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -492,67 +445,4 @@ public class OrderPlacedEvent extends org.apache.avro.specific.SpecificRecordBas
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeString(this.orderNumber);
-
-    out.writeString(this.email);
-
-    out.writeString(this.firstName);
-
-    out.writeString(this.lastName);
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.orderNumber = in.readString(this.orderNumber instanceof Utf8 ? (Utf8)this.orderNumber : null);
-
-      this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
-
-      this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
-
-      this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
-
-    } else {
-      for (int i = 0; i < 4; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.orderNumber = in.readString(this.orderNumber instanceof Utf8 ? (Utf8)this.orderNumber : null);
-          break;
-
-        case 1:
-          this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
-          break;
-
-        case 2:
-          this.firstName = in.readString(this.firstName instanceof Utf8 ? (Utf8)this.firstName : null);
-          break;
-
-        case 3:
-          this.lastName = in.readString(this.lastName instanceof Utf8 ? (Utf8)this.lastName : null);
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
-
-
-
-
-
-
-
-
-
-
