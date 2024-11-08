@@ -4,9 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.microservices.order.dto.OrderRequest;
+import com.example.microservices.order.rest.api.OrderRequest;
 import com.example.microservices.order.service.OrderService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,11 +29,16 @@ public class OrderController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Order created", content = {
                     @Content(mediaType = "application/text") }) })
+
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public String placeOrder(@RequestBody OrderRequest orderRequest) {
-        orderService.placeOrder(orderRequest);
-        return "Order Placed Successfully";
+    public ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest) {
+        try {
+            orderService.placeOrder(orderRequest);
+            return new ResponseEntity<String>("Order Placed Successfully", HttpStatus.CREATED);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return ResponseEntity.internalServerError().body("Failed to place order");
+        }
     }
 
     public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException runtimeException) {

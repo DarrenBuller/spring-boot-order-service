@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RestClientConfig {
 
-    @Value("${inventory.url}")
+    @Value("${order-application.inventoryUrl}")
     private String inventoryServiceUrl;
 
     @Bean
