@@ -1,4 +1,4 @@
-package com.example.mircoservices.order.model;
+package com.example.microservices.order.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
