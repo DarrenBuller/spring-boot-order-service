@@ -3,9 +3,7 @@ package com.example.mircoservices.order.service;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -14,6 +12,10 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import com.example.microservices.order.client.InventoryClient;
 import com.example.microservices.order.client.NotificationClient;
 import com.example.microservices.order.event.OrderPlacedEvent;
@@ -23,19 +25,23 @@ import com.example.microservices.order.service.OrderService;
 import com.example.mircoservices.order.utils.TestData;
 import com.example.microservices.order.model.Order;
 
+@ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
+    @Mock
     private OrderRepository mockOrderRepository;
+
+    @Mock
     private InventoryClient mockInventoryClient;
+
+    @Mock
     private NotificationClient mockNotificationClient;
+
     private OrderService orderService;
 
     @BeforeEach
     public void setUp() {
-        mockOrderRepository = mock(OrderRepository.class);
-        mockNotificationClient = mock(NotificationClient.class);
-        mockInventoryClient = mock(InventoryClient.class);
-
-        orderService = new OrderService(mockOrderRepository, mockInventoryClient, mockNotificationClient);
+        orderService = new OrderService(mockOrderRepository, mockInventoryClient,
+                mockNotificationClient);
     }
 
     @Test
