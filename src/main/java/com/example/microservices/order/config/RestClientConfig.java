@@ -14,6 +14,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 import com.example.microservices.order.client.InventoryClient;
 
+import io.micrometer.observation.ObservationRegistry;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -23,11 +24,14 @@ public class RestClientConfig {
     @Value("${order-application.inventoryUrl}")
     private String inventoryServiceUrl;
 
+    private final ObservationRegistry observationRegistry;
+
     @Bean
     public InventoryClient inventoryClient() {
         RestClient restClient = RestClient.builder()
                 .baseUrl(inventoryServiceUrl)
                 .requestFactory(getClientRequestFactory())
+                .observationRegistry(observationRegistry)
                 .build();
         var restClientAdapter = RestClientAdapter.create(restClient);
         var httpServiceProxyFactory = HttpServiceProxyFactory.builderFor(restClientAdapter).build();
